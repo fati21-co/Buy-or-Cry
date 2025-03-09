@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy or Cry - Jeu de Bourse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Bienvenue dans Buy or Cry !</h1>
+        <p>Entrez votre nom d'utilisateur pour commencer :</p>
+        <input type="text" id="username" placeholder="Votre nom d'utilisateur">
+        <button onclick="startGame()">Commencer</button>
+    </div>
+
+    <div id="game" class="hidden">
+        <h2>Marché Boursier</h2>
+        <p>Solde : <span id="balance">1000</span> $</p>
+        <div id="market">
+            <h3>Actions disponibles</h3>
+            <div id="stocks"></div>
+        </div>
+        <button onclick="endGame()">Terminer la partie</button>
+    </div>
+
+    <div id="results" class="hidden">
+        <h2>Classement des joueurs</h2>
+        <ol id="leaderboard"></ol>
+        <a href="index.html">Rejouer</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
