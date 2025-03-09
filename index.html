@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation de Bourse</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="home" class="container">
+        <h1 class="title">Simulation de Bourse Virtuelle</h1>
+        <p class="description">Scannez le QR Code pour rejoindre le jeu :</p>
+        <img id="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://fati21-co.github.io/buy-or-cry/index.html
+        " alt="QR Code">
+    </div>
+
+    <div id="game" class="container hidden">
+        <h1 class="title">Marché Boursier</h1>
+        <input type="text" id="username" class="input-field" placeholder="Entrez votre nom d'utilisateur">
+        <button class="btn" onclick="startGame()">Commencer</button>
+        <div id="market" class="hidden">
+            <h2 class="subtitle">Marchés</h2>
+            <div id="stocks" class="stocks-container"></div>
+            <button class="btn" onclick="endGame()">Terminer</button>
+        </div>
+    </div>
+
+    <div id="results" class="container hidden">
+        <h1 class="title">Résultats</h1>
+        <ol id="leaderboard" class="leaderboard"></ol>
+    </div>
+</body>
+</html>
