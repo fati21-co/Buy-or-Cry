@@ -29,8 +29,11 @@
         <ol id="leaderboard"></ol>
         <a href="index.html">Rejouer</a>
     </div>
-<script src="../script.js" defer></script>
-
+<script src="../script.js" defer>
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("game").classList.remove("hidden");
+});
+</script>
     <script src="script.js"></script>
 </body>
 </html>
