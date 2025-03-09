@@ -32,7 +32,14 @@
 <script src="script.js" defer>
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("game").classList.remove("hidden");
+    
 });
+    window.onload = function() {
+    if (!document.getElementById("username")) {
+        alert("Erreur : Champ d'entrée introuvable !");
+    }
+};
+
 </script>
     <script src="script.js"></script>
 </body>
