@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scores - Jeu de l'Offre et de la Demande</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Classement</h1>
+        <ul id="scoreboard"></ul>
+        <button id="play-again">Rejouer</button>
+    </div>
+    <script>
+        // Récupérer le nom d'utilisateur et le score depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const score = parseInt(urlParams.get('score'));
+
+        // Enregistrer le score dans le localStorage
+        const scores = JSON.parse(localStorage.getItem('scores')) || [];
+        scores.push({ username, score });
+        localStorage.setItem('scores', JSON.stringify(scores));
+
+        // Afficher les scores
+        const scoreboard = document.getElementById('scoreboard');
+        scores.sort((a, b) => b.score - a.score);
+        scoreboard.innerHTML = scores.slice(0, 3).map((user, index) => `
+            <li>${index + 1}. ${user.username} - ${user.score} points</li>
+        `).join('');
+
+        // Bouton "Rejouer"
+        document.getElementById('play-again').addEventListener('click', function() {
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
