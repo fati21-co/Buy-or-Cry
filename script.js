@@ -1,5 +1,5 @@
 // Générer le QR code
-const gameUrl = "https://fati21-co.github.io/index.html/"; // Remplacez par votre URL GitHub Pages
+const gameUrl = "https://fati21-co.github.io/buy-or-cry/"; // Remplacez par votre URL GitHub Pages
 const qrCodeContainer = document.getElementById('qr-code');
 new QRCode(qrCodeContainer, {
     text: gameUrl,
