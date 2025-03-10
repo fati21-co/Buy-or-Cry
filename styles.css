@@ -1,7 +1,7 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
-    color: #fff;
+    font-family: 'Comic Sans MS', cursive;
+    background: linear-gradient(135deg, #FF6F61, #FFD166);
+    color: #FFF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@ body {
 
 .container {
     text-align: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     padding: 30px;
     border-radius: 15px;
     backdrop-filter: blur(10px);
@@ -21,15 +21,16 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 32px;
     margin-bottom: 20px;
+    color: #FFF;
 }
 
 input {
     padding: 10px;
     font-size: 16px;
     margin-right: 10px;
-    border: 2px solid #ffd700;
+    border: 2px solid #FFF;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.8);
     color: #333;
@@ -38,8 +39,8 @@ input {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #ffd700;
-    color: #1e3c72;
+    background-color: #06D6A0;
+    color: #FFF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -47,7 +48,7 @@ button {
 }
 
 button:hover {
-    background-color: #ffcc00;
+    background-color: #04B486;
 }
 
 #scoreboard {
@@ -56,10 +57,10 @@ button:hover {
 }
 
 #scoreboard li {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
     font-size: 18px;
-    color: #ffd700;
+    color: #FFF;
 }
