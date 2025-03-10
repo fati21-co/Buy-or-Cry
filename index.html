@@ -3,54 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interface de Jeu - HUD</title>
+    <title>Jeu d'Investissement - Offre et Demande</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hud-container">
-        <!-- Barre de statut en haut -->
-        <div class="status-bar">
-            <div class="player-info">
-                <span class="player-name">PLAYER NAME</span>
-                <span class="player-score">160 | 200</span>
-            </div>
-            <div class="game-info">
-                <span class="game-mode">OVERTIME</span>
-                <span class="map-name">BASITON</span>
-            </div>
-        </div>
-
-        <!-- Zone de chat -->
-        <div class="chat-box">
-            <div class="chat-message">
-                <span class="player-name">Player Named:</span>
-                <span class="message">Hello Team!</span>
-            </div>
-            <div class="chat-message">
-                <span class="player-name">Player Named:</span>
-                <span class="message">Hello Match!</span>
-            </div>
-            <div class="chat-message">
-                <span class="player-name">[PLAYER (TRACER)]</span>
-                <span class="message">Winging it!</span>
-            </div>
-            <div class="chat-message">
-                <span class="player-name">[PLAYER (SOLDIER-76)]</span>
-                <span class="message">I've got you in my sights.</span>
-            </div>
-        </div>
-
-        <!-- Indicateurs visuels -->
-        <div class="indicators">
-            <div class="indicator">
-                <img src="https://img.icons8.com/color/48/000000/zenyatta.png" alt="Zenyatta">
-                <span class="indicator-name">X ZENYATA</span>
-            </div>
-            <div class="indicator">
-                <img src="https://img.icons8.com/color/48/000000/crocodile.png" alt="Crocodile">
-                <span class="indicator-name">EBAQIGATOR</span>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Scannez le QR code pour commencer</h1>
+        <div id="qr-code"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script>
+        // Générer le QR code
+        const gameUrl = "https://votre-username.github.io/votre-repo/login.html"; // Redirige vers la page de connexion
+        const qrCodeContainer = document.getElementById('qr-code');
+        new QRCode(qrCodeContainer, {
+            text: gameUrl,
+            width: 200,
+            height: 200,
+            colorDark: "#FF6F61",
+            colorLight: "#FFF",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
 </body>
 </html>
