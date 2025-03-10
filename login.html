@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Jeu d'Investissement</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Entrez votre nom d'utilisateur</h1>
-        <input type="text" id="username" placeholder="Nom d'utilisateur">
-        <button id="start-game">Commencer</button>
+        <h1>Inscription au jeu</h1>
+        <input type="text" id="username" placeholder="Entrez votre pseudo">
+        <button onclick="startGame()">Rejoindre le jeu</button>
     </div>
+
     <script>
-        document.getElementById('start-game').addEventListener('click', function() {
-            const username = document.getElementById('username').value;
+        function startGame() {
+            let username = document.getElementById("username").value;
             if (username) {
-                // Rediriger vers la page du jeu avec le nom d'utilisateur
-                window.location.href = `game.html?username=${encodeURIComponent(username)}`;
+                localStorage.setItem("username", username);
+                window.location.href = "game.html";
             } else {
-                alert('Veuillez entrer un nom d\'utilisateur');
+                alert("Veuillez entrer un pseudo !");
             }
-        });
+        }
     </script>
 </body>
 </html>
+
