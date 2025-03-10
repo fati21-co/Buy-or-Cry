@@ -17,13 +17,34 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.qr-code {
-    width: 150px;
+#qr-code {
     margin-bottom: 20px;
 }
 
 .hidden {
     display: none;
+}
+
+#login-section input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#login-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#login-section button:hover {
+    background-color: #218838;
 }
 
 #game-content {
@@ -32,6 +53,28 @@ body {
 
 #game-questions {
     margin-top: 20px;
+}
+
+#game-questions input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#game-questions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#game-questions button:hover {
+    background-color: #0056b3;
 }
 
 #scoreboard {
