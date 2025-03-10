@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu - Offre et Demande</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Jeu de l'Offre et de la Demande</h1>
+        <p>Bienvenue, <span id="display-username"></span>!</p>
+        <div id="game-questions"></div>
+    </div>
+    <script>
+        // Récupérer le nom d'utilisateur depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        document.getElementById('display-username').textContent = username;
+
+        // Questions du jeu
+        const questions = [
+            { question: "Si l'offre augmente et la demande reste constante, que se passe-t-il avec le prix?", answer: "baisse" },
+            { question: "Si la demande augmente et l'offre reste constante, que se passe-t-il avec le prix?", answer: "augmente" },
+            { question: "Qu'est-ce qui peut causer une augmentation de la demande?", answer: "publicité" }
+        ];
+
+        let score = 0;
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('game-questions').innerHTML = `
+                <p>${question.question}</p>
+                <input type="text" id="answer" placeholder="Votre réponse">
+                <button id="submit-answer">Soumettre</button>
+            `;
+
+            document.getElementById('submit-answer').addEventListener('click', function() {
+                const userAnswer = document.getElementById('answer').value.toLowerCase();
+                if (userAnswer === question.answer) {
+                    score += 10;
+                }
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    displayQuestion();
+                } else {
+                    // Rediriger vers la page des scores avec le score
+                    window.location.href = `scores.html?username=${encodeURIComponent(username)}&score=${score}`;
+                }
+            });
+        }
+
+        displayQuestion();
+    </script>
+</body>
+</html>
