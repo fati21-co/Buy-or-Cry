@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,70 +11,43 @@ body {
 
 .container {
     text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
 }
 
-#qr-code {
+h1 {
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-.hidden {
-    display: none;
-}
-
-#login-section input {
+input {
     padding: 10px;
     font-size: 16px;
     margin-right: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ffd700;
     border-radius: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #333;
 }
 
-#login-section button {
+button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #28a745;
-    color: white;
+    background-color: #ffd700;
+    color: #1e3c72;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#login-section button:hover {
-    background-color: #218838;
-}
-
-#game-content {
-    margin-top: 20px;
-}
-
-#game-questions {
-    margin-top: 20px;
-}
-
-#game-questions input {
-    padding: 10px;
-    font-size: 16px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#game-questions button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#game-questions button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #ffcc00;
 }
 
 #scoreboard {
@@ -83,8 +56,10 @@ body {
 }
 
 #scoreboard li {
-    background-color: #e0e0e0;
-    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
+    font-size: 18px;
+    color: #ffd700;
 }
