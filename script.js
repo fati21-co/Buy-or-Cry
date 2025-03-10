@@ -1,3 +1,16 @@
+// Générer le QR code
+const gameUrl = "https://fati21-co.github.io/index.html/"; // Remplacez par votre URL GitHub Pages
+const qrCodeContainer = document.getElementById('qr-code');
+new QRCode(qrCodeContainer, {
+    text: gameUrl,
+    width: 150,
+    height: 150,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+});
+
+// Gestion du jeu
 document.getElementById('start-game').addEventListener('click', function() {
     const username = document.getElementById('username').value;
     if (username) {
