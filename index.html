@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu d'Investissement - Offre et Demande</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simulation de Bourse Virtuelle</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Scannez le QR code pour commencer</h1>
-        <div id="qr-code"></div>
+        <h1>Bienvenue dans la Simulation de Bourse</h1>
+        <p>Scannez le QR code pour commencer le jeu.</p>
+        <div id="qrcode"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    
     <script>
-        // Générer le QR code
-        const gameUrl = "https://votre-username.github.io/votre-repo/login.html"; // Redirige vers la page de connexion
-        const qrCodeContainer = document.getElementById('qr-code');
-        new QRCode(qrCodeContainer, {
-            text: gameUrl,
+        var qr = new QRCode(document.getElementById("qrcode"), {
+            text: "https://ton-site.github.io/signup.html",
             width: 200,
-            height: 200,
-            colorDark: "#FF6F61",
-            colorLight: "#FFF",
-            correctLevel: QRCode.CorrectLevel.H
+            height: 200
         });
     </script>
 </body>
