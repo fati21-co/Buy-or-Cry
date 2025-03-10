@@ -7,9 +7,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container fade-in">
         <h1>Scannez le QR code pour commencer</h1>
         <div id="qr-code"></div>
+        <div class="sticker sticker-1">
+            <img src="https://img.icons8.com/color/96/000000/money-bag.png" alt="Money Bag">
+        </div>
+        <div class="sticker sticker-2">
+            <img src="https://img.icons8.com/color/96/000000/gold-bars.png" alt="Gold Bars">
+        </div>
+        <div class="sticker sticker-3">
+            <img src="https://img.icons8.com/color/96/000000/stock-exchange.png" alt="Stock Exchange">
+        </div>
+        <div class="sticker sticker-4">
+            <img src="https://img.icons8.com/color/96/000000/treasure-chest.png" alt="Treasure Chest">
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
     <script>
@@ -21,7 +33,7 @@
             width: 200,
             height: 200,
             colorDark: "#FF6F61",
-            colorLight: "#FFF",
+            colorLight: "transparent",
             correctLevel: QRCode.CorrectLevel.H
         });
     </script>
