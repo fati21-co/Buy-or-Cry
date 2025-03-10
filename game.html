@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu - Offre et Demande</title>
+    <title>Jeu d'Investissement - Offre et Demande</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Jeu de l'Offre et de la Demande</h1>
+        <h1>Jeu d'Investissement</h1>
         <p>Bienvenue, <span id="display-username"></span>!</p>
-        <div id="game-questions"></div>
+        <div class="capital">Capital : <span id="capital">1000</span> €</div>
+        <div id="market">
+            <div class="product" data-product="actions">
+                <h2>Actions</h2>
+                <p>Prix : <span id="actions-price">100</span> €</p>
+                <button id="buy-actions">Acheter</button>
+                <button id="sell-actions">Vendre</button>
+            </div>
+            <div class="product" data-product="or">
+                <h2>Or</h2>
+                <p>Prix : <span id="or-price">50</span> €</p>
+                <button id="buy-or">Acheter</button>
+                <button id="sell-or">Vendre</button>
+            </div>
+        </div>
+        <div id="events"></div>
     </div>
     <script>
         // Récupérer le nom d'utilisateur depuis l'URL
@@ -18,40 +33,88 @@
         const username = urlParams.get('username');
         document.getElementById('display-username').textContent = username;
 
-        // Questions du jeu
-        const questions = [
-            { question: "Si l'offre augmente et la demande reste constante, que se passe-t-il avec le prix?", answer: "baisse" },
-            { question: "Si la demande augmente et l'offre reste constante, que se passe-t-il avec le prix?", answer: "augmente" },
-            { question: "Qu'est-ce qui peut causer une augmentation de la demande?", answer: "publicité" }
-        ];
+        // Variables du jeu
+        let capital = 1000;
+        let actions = 0;
+        let or = 0;
+        let actionsPrice = 100;
+        let orPrice = 50;
 
-        let score = 0;
-        let currentQuestionIndex = 0;
-
-        function displayQuestion() {
-            const question = questions[currentQuestionIndex];
-            document.getElementById('game-questions').innerHTML = `
-                <p>${question.question}</p>
-                <input type="text" id="answer" placeholder="Votre réponse">
-                <button id="submit-answer">Soumettre</button>
-            `;
-
-            document.getElementById('submit-answer').addEventListener('click', function() {
-                const userAnswer = document.getElementById('answer').value.toLowerCase();
-                if (userAnswer === question.answer) {
-                    score += 10;
-                }
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    displayQuestion();
-                } else {
-                    // Rediriger vers la page des scores avec le score
-                    window.location.href = `scores.html?username=${encodeURIComponent(username)}&score=${score}`;
-                }
-            });
+        // Mettre à jour l'affichage
+        function updateDisplay() {
+            document.getElementById('capital').textContent = capital;
+            document.getElementById('actions-price').textContent = actionsPrice;
+            document.getElementById('or-price').textContent = orPrice;
         }
 
-        displayQuestion();
+        // Événements aléatoires
+        function randomEvent() {
+            const events = [
+                "Une crise économique fait chuter les prix !",
+                "Une nouvelle technologie fait monter les actions !",
+                "La demande d'or explose !"
+            ];
+            const event = events[Math.floor(Math.random() * events.length)];
+            document.getElementById('events').textContent = event;
+
+            // Appliquer l'effet de l'événement
+            if (event.includes("chuter")) {
+                actionsPrice -= 20;
+                orPrice -= 10;
+            } else if (event.includes("monter")) {
+                actionsPrice += 30;
+            } else if (event.includes("explose")) {
+                orPrice += 40;
+            }
+
+            updateDisplay();
+        }
+
+        // Acheter/Vendre des actions
+        document.getElementById('buy-actions').addEventListener('click', function() {
+            if (capital >= actionsPrice) {
+                capital -= actionsPrice;
+                actions++;
+                updateDisplay();
+            } else {
+                alert("Fonds insuffisants !");
+            }
+        });
+
+        document.getElementById('sell-actions').addEventListener('click', function() {
+            if (actions > 0) {
+                capital += actionsPrice;
+                actions--;
+                updateDisplay();
+            } else {
+                alert("Vous n'avez pas d'actions à vendre !");
+            }
+        });
+
+        // Acheter/Vendre de l'or
+        document.getElementById('buy-or').addEventListener('click', function() {
+            if (capital >= orPrice) {
+                capital -= orPrice;
+                or++;
+                updateDisplay();
+            } else {
+                alert("Fonds insuffisants !");
+            }
+        });
+
+        document.getElementById('sell-or').addEventListener('click', function() {
+            if (or > 0) {
+                capital += orPrice;
+                or--;
+                updateDisplay();
+            } else {
+                alert("Vous n'avez pas d'or à vendre !");
+            }
+        });
+
+        // Lancer le jeu
+        updateDisplay();
+        setInterval(randomEvent, 10000); // Événement aléatoire toutes les 10 secondes
     </script>
 </body>
 </html>
