@@ -1,82 +1,68 @@
-document.addEventListener("DOMContentLoaded", () => {
-    let players = [];
-    let stocks = [
-        { name: "TechCorp", price: 100 },
-        { name: "PharmaPlus", price: 80 },
-        { name: "GreenEnergy", price: 120 }
-    ];
-    let username = "";
-    let balance = 1000;
-    let portfolio = {};
-
-    function startGame() {
-        username = document.getElementById("username").value.trim();
-        if (username === "") {
-            alert("Veuillez entrer un nom d'utilisateur");
-            return;
-        }
-        document.getElementById("home").classList.add("hidden");
-        document.getElementById("game").classList.remove("hidden");
-        document.getElementById("market").classList.remove("hidden");
-        updateMarket();
+document.getElementById('start-game').addEventListener('click', function() {
+    const username = document.getElementById('username').value;
+    if (username) {
+        document.getElementById('display-username').textContent = username;
+        document.getElementById('login-section').classList.add('hidden');
+        document.getElementById('game-section').classList.remove('hidden');
+        startGame();
+    } else {
+        alert('Veuillez entrer un nom d\'utilisateur');
     }
-
-    function updateMarket() {
-        let stocksContainer = document.getElementById("stocks");
-        stocksContainer.innerHTML = "";
-        stocks.forEach(stock => {
-            stock.price += (Math.random() * 20 - 10); // Variation de prix aléatoire
-            stock.price = Math.max(10, Math.round(stock.price));
-            let stockElement = document.createElement("div");
-            stockElement.innerHTML = `
-                <p>${stock.name} - Prix : ${stock.price} $</p>
-                <button onclick="buyStock('${stock.name}', ${stock.price})">Acheter</button>
-                <button onclick="sellStock('${stock.name}', ${stock.price})">Vendre</button>
-            `;
-            stocksContainer.appendChild(stockElement);
-        });
-    }
-
-    function buyStock(stockName, price) {
-        if (balance >= price) {
-            balance -= price;
-            portfolio[stockName] = (portfolio[stockName] || 0) + 1;
-            alert(`Vous avez acheté une action de ${stockName}`);
-        } else {
-            alert("Fonds insuffisants !");
-        }
-    }
-
-    function sellStock(stockName, price) {
-        if (portfolio[stockName] && portfolio[stockName] > 0) {
-            balance += price;
-            portfolio[stockName] -= 1;
-            alert(`Vous avez vendu une action de ${stockName}`);
-        } else {
-            alert("Vous ne possédez pas cette action !");
-        }
-    }
-
-    function endGame() {
-        let profit = balance - 1000;
-        players.push({ username, profit });
-        players.sort((a, b) => b.profit - a.profit);
-
-        document.getElementById("game").classList.add("hidden");
-        document.getElementById("results").classList.remove("hidden");
-        let leaderboard = document.getElementById("leaderboard");
-        leaderboard.innerHTML = "";
-
-        players.slice(0, 3).forEach((player, index) => {
-            let li = document.createElement("li");
-            li.textContent = `${index + 1}. ${player.username} - Profit : ${player.profit} $`;
-            leaderboard.appendChild(li);
-        });
-    }
-
-    window.startGame = startGame;
-    window.buyStock = buyStock;
-    window.sellStock = sellStock;
-    window.endGame = endGame;
-    setInterval(updateMarket, 5000); // Mise à jour du marché toutes les 5 secondes
 });
+
+function startGame() {
+    const questions = [
+        { question: "Si l'offre augmente et la demande reste constante, que se passe-t-il avec le prix?", answer: "baisse" },
+        { question: "Si la demande augmente et l'offre reste constante, que se passe-t-il avec le prix?", answer: "augmente" },
+        { question: "Qu'est-ce qui peut causer une augmentation de la demande?", answer: "publicité" }
+    ];
+
+    let score = 0;
+    let currentQuestionIndex = 0;
+
+    function displayQuestion() {
+        const question = questions[currentQuestionIndex];
+        document.getElementById('game-questions').innerHTML = `
+            <p>${question.question}</p>
+            <input type="text" id="answer" placeholder="Votre réponse">
+            <button id="submit-answer">Soumettre</button>
+        `;
+
+        document.getElementById('submit-answer').addEventListener('click', function() {
+            const userAnswer = document.getElementById('answer').value.toLowerCase();
+            if (userAnswer === question.answer) {
+                score += 10;
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                endGame(score);
+            }
+        });
+    }
+
+    displayQuestion();
+}
+
+function endGame(score) {
+    document.getElementById('game-section').classList.add('hidden');
+    document.getElementById('score-section').classList.remove('hidden');
+
+    const username = document.getElementById('username').value;
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    scores.push({ username, score });
+    localStorage.setItem('scores', JSON.stringify(scores));
+
+    displayScores();
+}
+
+function displayScores() {
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    scores.sort((a, b) => b.score - a.score);
+
+    const scoreboard = document.getElementById('scoreboard');
+    scoreboard.innerHTML = scores.slice(0, 3).map((user, index) => `
+        <li>${index + 1}. ${user.username} - ${user.score} points</li>
+    `).join('');
+}
