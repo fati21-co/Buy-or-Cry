@@ -1,103 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    background: url('market-game-bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-}
-
-.container {
-    width: 50%;
-    margin: auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    transition: 0.3s ease-in-out;
-}
-
-.container:hover {
-    transform: scale(1.02);
-}
-
-button {
-    background: linear-gradient(45deg, #ff6600, #ff3300);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.4rem;
-    cursor: pointer;
-    margin: 10px;
-    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.8);
-    transition: all 0.3s ease;
-    position: relative;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     overflow: hidden;
 }
 
-button:hover {
-    background: linear-gradient(45deg, #ff3300, #ff6600);
-    box-shadow: 0 6px 15px rgba(255, 255, 0, 0.9);
-    transform: scale(1.05);
+.quiz-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.dashboard {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.stock {
-    display: inline-block;
-    width: 30%;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
+.quiz-header h1 {
+    font-size: 24px;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.score {
+    font-size: 18px;
+    color: #fff;
+}
+
+.question-container {
+    margin-bottom: 20px;
+}
+
+#question {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.option {
+    padding: 15px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #ffd700;
     border-radius: 10px;
-    margin: 10px;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
-    transition: 0.3s ease-in-out;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-.stock:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 1);
+.option:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
-h1 {
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 15px rgba(0, 255, 255, 0.8);
-    animation: glow 1.5s infinite alternate;
+.option.correct {
+    background: #4caf50 !important;
+    border-color: #4caf50;
 }
 
-@keyframes glow {
-    from {
-        text-shadow: 2px 2px 15px rgba(0, 255, 255, 0.6);
-    }
-    to {
-        text-shadow: 2px 2px 25px rgba(0, 255, 255, 1);
-    }
+.option.wrong {
+    background: #f44336 !important;
+    border-color: #f44336;
 }
 
-/* Ajout d'une bannière animée pour le marché */
-.market-banner {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ffcc00;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
-    margin-bottom: 15px;
-    animation: ticker 10s linear infinite;
+#next-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #ffd700;
+    color: #1e3c72;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-@keyframes ticker {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
-    }
+#next-button:hover {
+    background: #ffcc00;
 }
