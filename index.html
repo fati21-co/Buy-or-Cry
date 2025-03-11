@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulation de Bourse Virtuelle</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title> Marché, Offre et Demande</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenue dans la Simulation de Bourse</h1>
-        <p>Scannez le QR code pour commencer le jeu.</p>
-        <div id="qrcode"></div>
+    <div class="quiz-container">
+        <!-- En-tête du quiz -->
+        <div class="quiz-header">
+            <h1>Marché, Offre et Demande</h1>
+            <div class="score">Score : <span id="score">0</span></div>
+        </div>
+
+        <!-- Zone de la question -->
+        <div class="question-container">
+            <div id="question"></div>
+            <div class="options-container">
+                <button class="option" id="option1"></button>
+                <button class="option" id="option2"></button>
+                <button class="option" id="option3"></button>
+                <button class="option" id="option4"></button>
+            </div>
+        </div>
+
+        <!-- Bouton pour passer à la question suivante -->
+        <button id="next-button">Question Suivante</button>
     </div>
-    
-    <script>
-        var qr = new QRCode(document.getElementById("qrcode"), {
-            text: "https://fati21-co.github.io/Buy-or-Cry/signup.html",
-            width: 200,
-            height: 200
-        });
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
