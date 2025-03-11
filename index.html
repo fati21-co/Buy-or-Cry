@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Marché, Offre et Demande</title>
+    <title>Quiz - Accueil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="quiz-container">
-        <!-- En-tête du quiz -->
-        <div class="quiz-header">
-            <h1>Marché, Offre et Demande</h1>
-            <div class="score">Score : <span id="score">0</span></div>
-        </div>
-
-        <!-- Zone de la question -->
-        <div class="question-container">
-            <div id="question"></div>
-            <div class="options-container">
-                <button class="option" id="option1"></button>
-                <button class="option" id="option2"></button>
-                <button class="option" id="option3"></button>
-                <button class="option" id="option4"></button>
-            </div>
-        </div>
-
-        <!-- Bouton pour passer à la question suivante -->
-        <button id="next-button">Question Suivante</button>
+    <div class="container">
+        <h1>Scannez le QR code pour commencer</h1>
+        <div id="qr-code"></div>
     </div>
-
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script>
+        // Générer le QR code
+        const gameUrl = "https://fati21-co.github.io/Buy-or-Cry/login.html"; // Redirige vers la page de connexion
+        const qrCodeContainer = document.getElementById('qr-code');
+        new QRCode(qrCodeContainer, {
+            text: gameUrl,
+            width: 200,
+            height: 200,
+            colorDark: "#FF6F61",
+            colorLight: "#FFF",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    </script>
 </body>
 </html>
