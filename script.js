@@ -1,4 +1,4 @@
-// Questions du quiz sur le marché, l'offre et la demande
+// Questions du quiz
 const questions = [
     {
         question: "Qu'est-ce que la loi de l'offre et de la demande ?",
