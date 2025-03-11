@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Jeu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenue, <span id="display-username"></span>!</h1>
+        <div id="game-content" class="hidden">
+            <div id="question"></div>
+            <div class="options-container">
+                <button class="option" id="option1"></button>
+                <button class="option" id="option2"></button>
+                <button class="option" id="option3"></button>
+                <button class="option" id="option4"></button>
+            </div>
+        </div>
+        <div id="waiting-message">
+            <p>En attente du début du jeu...</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Récupérer le nom d'utilisateur depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        document.getElementById('display-username').textContent = username;
 
+        // Simuler un accès administrateur pour démarrer le jeu
+        let gameStarted = false;
+
+        // Fonction pour démarrer le jeu (à appeler manuellement par l'administrateur)
+        function startGame() {
+            gameStarted = true;
+            document.getElementById('game-content').classList.remove('hidden');
+            document.getElementById('waiting-message').classList.add('hidden');
+            showQuestion(); // Afficher la première question
+        }
+
+        // Exemple : Démarrer le jeu après 10 secondes (simulation d'un accès administrateur)
+        setTimeout(startGame, 10000); // À remplacer par un déclencheur manuel
+    </script>
+</body>
+</html>
